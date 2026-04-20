@@ -1,0 +1,69 @@
+type SubmitResult = 
+ variant {
+   err: text;
+   ok: EnquiryId;
+ };
+type ProgramType = 
+ variant {
+   arts;
+   business;
+   engineering;
+   law;
+   medicine;
+   other;
+   science;
+ };
+type InquiryType = 
+ variant {
+   admissionsGuidance;
+   awards;
+   bookPublication;
+   careerCounselling;
+   doctoralExecutiveProgram;
+   fellowships;
+   journalPublication;
+   onlineDistanceEducation;
+   other;
+   patents;
+   prBranding;
+   studyAbroad;
+   thesisWriting;
+   universitySelection;
+ };
+type EnquiryInput = 
+ record {
+   countryPreference: text;
+   educationLevel: EducationLevel;
+   email: text;
+   inquiryType: InquiryType;
+   message: text;
+   name: text;
+   phone: text;
+   programType: ProgramType;
+ };
+type EnquiryId = nat;
+type Enquiry = 
+ record {
+   countryPreference: text;
+   educationLevel: EducationLevel;
+   email: text;
+   id: EnquiryId;
+   inquiryType: InquiryType;
+   message: text;
+   name: text;
+   phone: text;
+   programType: ProgramType;
+   submittedAt: int;
+ };
+type EducationLevel = 
+ variant {
+   doctorate;
+   highSchool;
+   other;
+   postgraduate;
+   undergraduate;
+ };
+service : {
+  getEnquiries: () -> (vec Enquiry) query;
+  submitEnquiry: (input: EnquiryInput) -> (SubmitResult);
+}

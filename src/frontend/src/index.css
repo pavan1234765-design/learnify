@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Plus Jakarta Sans";
+    --font-body: "General Sans";
+    --font-mono: "Geist Mono";
+    --radius: 0.5rem;
+
+    --background: 1.0 0.001 0;
+    --foreground: 0.21 0.01 250;
+    --card: 1.0 0.001 0;
+    --card-foreground: 0.21 0.01 250;
+    --popover: 1.0 0.001 0;
+    --popover-foreground: 0.21 0.01 250;
+
+    --primary: 0.35 0.06 250;
+    --primary-foreground: 1.0 0.001 0;
+
+    --secondary: 0.96 0.002 250;
+    --secondary-foreground: 0.35 0.06 250;
+    --muted: 0.97 0.001 0;
+    --muted-foreground: 0.48 0.01 250;
+
+    --accent: 0.67 0.19 75;
+    --accent-foreground: 0.21 0.01 250;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 1.0 0.001 0;
+
+    --border: 0.93 0.002 250;
+    --input: 0.97 0.001 0;
+    --ring: 0.35 0.06 250;
+
+    --chart-1: 0.67 0.19 75;
+    --chart-2: 0.35 0.06 250;
+    --chart-3: 0.55 0.14 25;
+    --chart-4: 0.65 0.12 180;
+    --chart-5: 0.75 0.15 100;
+
+    --sidebar: 0.97 0.001 0;
+    --sidebar-foreground: 0.21 0.01 250;
+    --sidebar-primary: 0.35 0.06 250;
+    --sidebar-primary-foreground: 1.0 0.001 0;
+    --sidebar-accent: 0.93 0.002 250;
+    --sidebar-accent-foreground: 0.35 0.06 250;
+    --sidebar-border: 0.9 0.002 250;
+    --sidebar-ring: 0.35 0.06 250;
+  }
+
+  .dark {
+    --background: 0.15 0.008 250;
+    --foreground: 0.95 0.008 0;
+    --card: 0.2 0.01 250;
+    --card-foreground: 0.95 0.008 0;
+    --popover: 0.22 0.012 250;
+    --popover-foreground: 0.95 0.008 0;
+
+    --primary: 0.65 0.12 250;
+    --primary-foreground: 1.0 0.001 0;
+
+    --secondary: 0.25 0.008 250;
+    --secondary-foreground: 0.9 0.008 0;
+    --muted: 0.25 0.008 250;
+    --muted-foreground: 0.6 0.01 0;
+
+    --accent: 0.72 0.22 75;
+    --accent-foreground: 0.15 0.008 250;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.95 0.008 0;
+
+    --border: 0.3 0.008 250;
+    --input: 0.3 0.008 250;
+    --ring: 0.65 0.12 250;
+
+    --chart-1: 0.72 0.22 75;
+    --chart-2: 0.65 0.12 250;
+    --chart-3: 0.65 0.19 22;
+    --chart-4: 0.7 0.18 180;
+    --chart-5: 0.8 0.2 100;
+
+    --sidebar: 0.2 0.01 250;
+    --sidebar-foreground: 0.95 0.008 0;
+    --sidebar-primary: 0.65 0.12 250;
+    --sidebar-primary-foreground: 1.0 0.001 0;
+    --sidebar-accent: 0.25 0.008 250;
+    --sidebar-accent-foreground: 0.9 0.008 0;
+    --sidebar-border: 0.3 0.008 250;
+    --sidebar-ring: 0.65 0.12 250;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--primary)) 0%,
+      oklch(var(--accent)) 100%
+    );
+  }
+
+  .text-gradient-primary {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--primary)) 0%,
+      oklch(var(--accent)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 10px 25px -5px rgba(30, 58, 95, 0.12), 0 4px 6px -2px
+      rgba(30, 58, 95, 0.08);
+  }
+
+  .shadow-subtle {
+    box-shadow: 0 2px 4px rgba(30, 58, 95, 0.06);
+  }
+
+  .border-navy {
+    border-color: oklch(var(--primary));
+  }
+
+  .text-navy {
+    color: oklch(var(--primary));
+  }
+
+  .bg-gold {
+    background-color: oklch(var(--accent));
+  }
+
+  .text-gold {
+    color: oklch(var(--accent));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float {
+    animation: none !important;
+  }
+}
