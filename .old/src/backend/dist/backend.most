@@ -1,0 +1,47 @@
+// Version: 1.0.0
+type EducationLevel__1058733273 =
+  {#doctorate; #highSchool; #other; #postgraduate; #undergraduate};
+type EnquiryId__765337912 = Nat;
+type Enquiry__582474784 =
+  {
+    countryPreference : Text;
+    educationLevel : EducationLevel__1058733273;
+    email : Text;
+    id : EnquiryId__765337912;
+    inquiryType : InquiryType__842089799;
+    message : Text;
+    name : Text;
+    phone : Text;
+    programType : ProgramType__1023780328;
+    submittedAt : Int
+  };
+type InquiryType__842089799 =
+  {
+    #admissionsGuidance;
+    #awards;
+    #bookPublication;
+    #careerCounselling;
+    #doctoralExecutiveProgram;
+    #fellowships;
+    #journalPublication;
+    #onlineDistanceEducation;
+    #other;
+    #patents;
+    #prBranding;
+    #studyAbroad;
+    #thesisWriting;
+    #universitySelection
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type ProgramType__1023780328 =
+  {#arts; #business; #engineering; #law; #medicine; #other; #science};
+actor {
+  stable enquiries :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Enquiry__582474784]];
+      var elementIndex : Nat__490723111
+    };
+  stable var nextEnquiryId : Nat
+};
